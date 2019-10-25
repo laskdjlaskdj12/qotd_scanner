@@ -77,7 +77,7 @@ def start_scanning():
         start_ip_address = str(entity["start_ip"])
         end_ip_address = str(entity["end_ip"])
 
-        result_document_name = instance_name + " " + str(i) + ".txt"
+        result_document_name = instance_name + "_" + str(i) + ".txt"
         command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 32 50"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 
