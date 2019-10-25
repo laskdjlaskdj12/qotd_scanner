@@ -80,6 +80,9 @@ def start_scanning():
 
         result_document_name = instance_name + "_" + str(i) + ".txt"
         command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 4096 1000"
+
+        print(command)
+
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         print(str(i) + " scaaning is on progress")
 
