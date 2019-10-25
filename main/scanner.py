@@ -1,6 +1,7 @@
 import csv
 import subprocess
 import json
+from time import sleep
 
 ip_range_list = []
 ip_split_list = []
@@ -78,10 +79,15 @@ def start_scanning():
         end_ip_address = str(entity["end_ip"])
 
         result_document_name = instance_name + "_" + str(i) + ".txt"
-        command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 32 50"
+        command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 4096 1000"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-
         print(str(i) + " scaaning is on progress")
+
+        while (process.poll() == None):
+            for output in process.stdout:
+                print(output)
+            sleep(1)
+
         process.wait()
 
 
