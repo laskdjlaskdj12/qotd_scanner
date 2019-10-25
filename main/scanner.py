@@ -81,7 +81,7 @@ def start_scanning():
         command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 32 50"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 
-        print(i + " scaaning is on progress")
+        print(str(i) + " scaaning is on progress")
         process.wait()
 
 
