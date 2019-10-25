@@ -71,19 +71,18 @@ def start_scanning():
     instance_name = scanning_info["name"]
 
     # 공격 스크립트를 실행함
-    for list in range(0, len(address_list_info)):
-        entity = address_list_info[list]
+    for i in range(0, len(address_list_info)):
+        entity = address_list_info[i]
 
         start_ip_address = str(entity["start_ip"])
         end_ip_address = str(entity["end_ip"])
 
-        result_document_name = instance_name + " " + str(list) + ".txt"
+        result_document_name = instance_name + " " + str(i) + ".txt"
         command = "./ssdps " + start_ip_address + " " + end_ip_address + " " + result_document_name + " 32 50"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 
-        print(process.stdout)
+        print(i + " scaaning is on progress")
         process.wait()
-        print(command)
 
 
 start_scanning()
